@@ -8,5 +8,6 @@
  */
 int _put(char *string)
 {
-        return write(STDOUT_FILENO, string, str_len(string));
+return (write(STDOUT_FILENO, string, str_len(string)));
+
 }

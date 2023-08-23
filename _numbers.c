@@ -10,29 +10,29 @@
  */
 void long_to_string(long number, char *string, int base)
 {
-	int index = 0, inNegative = 0;
-	long quotient = number;
-	const char letters[] = "0123456789abcdef";
+int index = 0, inNegative = 0;
+long quotient = number;
+const char letters[] = "0123456789abcdef";
 
-	if (quotient == 0)
-		string[index++] = '0';
+if (quotient == 0)
+string[index++] = '0';
 
-	if (string[0] == '-')
-		inNegative = 1;
+if (string[0] == '-')
+inNegative = 1;
 
-	while (quotient)
-	{
-		if (quotient < 0)
-			string[index++] = letters[-(quotient % base)];
-		else
-			string[index++] = letters[quotient % base];
-		quotient /= base;
-	}
-	if (inNegative)
-		string[index++] = '-';
+while (quotient)
+{
+if (quotient < 0)
+string[index++] = letters[-(quotient % base)];
+else
+string[index++] = letters[quotient % base];
+quotient /= base;
+}
+if (inNegative)
+string[index++] = '-';
 
-	string[index] = '\0';
-	str_rev(string);
+string[index] = '\0';
+str_rev(string);
 }
 
 /**
@@ -43,26 +43,26 @@ void long_to_string(long number, char *string, int base)
  */
 int _atoi(char *s)
 {
-	int sign = 1;
-	unsigned int number = 0;
+int sign = 1;
+unsigned int number = 0;
 
-	/* Analyze the sign */
-	while (!('0' <= *s && *s <= '9') && *s != '\0')
-	{
-		if (*s == '-')
-			sign *= -1;
-		if (*s == '+')
-			sign *= +1;
-		s++;
-	}
+/* Analyze the sign */
+while (!('0' <= *s && *s <= '9') && *s != '\0')
+{
+if (*s == '-')
+sign *= -1;
+if (*s == '+')
+sign *= +1;
+s++;
+}
 
-	/* Extract the number */
-	while ('0' <= *s && *s <= '9' && *s != '\0')
-	{
-		number = (number * 10) + (*s - '0');
-		s++;
-	}
-	return (number * sign);
+/* Extract the number */
+while ('0' <= *s && *s <= '9' && *s != '\0')
+{
+number = (number * 10) + (*s - '0');
+s++;
+}
+return (number *sign);
 }
 
 /**
@@ -74,13 +74,13 @@ int _atoi(char *s)
  */
 int count_characters(char *string, char character)
 {
-	int i = 0, counter = 0;
+int i = 0, counter = 0;
 
-	for (; string[i]; i++)
-	{
-		if (string[i] == character)
-			counter++;
-	}
-	return counter;
+for (; string[i]; i++)
+{
+if (string[i] == character)
+counter++;
+}
+return (counter);
 }
 

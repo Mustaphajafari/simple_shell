@@ -7,13 +7,13 @@
  */
 void free_recurrent_data(data_of_program *data)
 {
-	free_array_of_pointers(data->tokens);
-	free(data->input_line);
-	free(data->command_name);
+free_array_of_pointers(data->tokens);
+free(data->input_line);
+free(data->command_name);
 
-	data->input_line = NULL;
-	data->command_name = NULL;
-	data->tokens = NULL;
+data->input_line = NULL;
+data->command_name = NULL;
+data->tokens = NULL;
 }
 
 /**
@@ -23,12 +23,12 @@ void free_recurrent_data(data_of_program *data)
  */
 void free_all_data(data_of_program *data)
 {
-	if (data->file_descriptor != 0 && close(data->file_descriptor) != 0)
-		perror(data->program_name);
+if (data->file_descriptor != 0 && close(data->file_descriptor) != 0)
+perror(data->program_name);
 
-	free_recurrent_data(data);
-	free_array_of_pointers(data->env);
-	free_array_of_pointers(data->alias_list);
+free_recurrent_data(data);
+free_array_of_pointers(data->env);
+free_array_of_pointers(data->alias_list);
 }
 
 /**
@@ -40,12 +40,12 @@ void free_array_of_pointers(char **array)
 {
 int i = 0;
 
-	if (array != NULL)
-	{
-		for (i = 0; array[i]; i++)
-			free(array[i]);
+if (array != NULL)
+{
+for (i = 0; array[i]; i++)
+free(array[i]);
 
-		free(array);
-	}
+free(array);
+}
 }
 

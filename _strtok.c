@@ -8,30 +8,30 @@
  */
 char *_strtok(char *line, char *delim)
 {
-	static char *str;
-	char *token_start = NULL;
+static char *str;
+char *token_start = NULL;
 
-	if (line != NULL)
-		str = line;
+if (line != NULL)
+str = line;
 
-	/* Skip leading delimiters */
-	while (*str != '\0' && strchr(delim, *str) != NULL)
-		str++;
+/* Skip leading delimiters */
+while (*str != '\0' && strchr(delim, *str) != NULL)
+str++;
+if (*str == '\0')
+return (NULL);
 
-	if (*str == '\0')
-		return (NULL);
+token_start = str;
 
-	token_start = str;
+/* Find the end of the token */
+while (*str != '\0' && strchr(delim, *str) == NULL)
+str++;
 
-	/* Find the end of the token */
-	while (*str != '\0' && strchr(delim, *str) == NULL)
-		str++;
+if (*str != '\0')
+{
+*str = '\0';
+str++;
+}
 
-	if (*str != '\0') {
-		*str = '\0';
-		str++;
-	}
-
-	return token_start;
+return (token_start);
 }
 

@@ -8,5 +8,5 @@
  */
 int _putchar(char *string)
 {
-        return write(STDERR_FILENO, string, str_len(string));
+return (write(STDERR_FILENO, string, str_len(string)));
 }
