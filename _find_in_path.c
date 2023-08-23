@@ -1,9 +1,9 @@
 #include "shell.h"
-
+/*
 int find_path(data_of_program *data);
 char **tokenize_path(data_of_program *data);
 int check_file(char *full_path);
-
+*/
 /**
  * find_path - find a program in the PATH
  * @data: a pointer to the program's data

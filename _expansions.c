@@ -11,12 +11,12 @@ void expand_var(data_of_program *data)
 char *temp_line;
     char *expanded_pid_line;
     char *expanded_var_line;
-  char line[BUFFER_SIZE];  
+  char line[BUFFER_SIZE] = {0};  
 
 	if (data->input_line == NULL)
         return;
 
-line[BUFFER_SIZE] = {0};
+
     buffer_add(line, data->input_line);
 
     temp_line = expand_exit_status(line);

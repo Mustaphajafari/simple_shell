@@ -16,7 +16,7 @@ int execute(data_of_program *data)
 		return retval;
 
 	/* Check if the program exists in the file system */
-	retval = find_program(data);
+	retval = find_path(data);
 	if (retval)
 		return retval;
 

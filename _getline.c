@@ -17,7 +17,7 @@ int _getline(data_of_program *data)
 	if (!array_commands[0] || (array_operators[0] == '&' && errno != 0) ||
 	    (array_operators[0] == '|' && errno == 0))
 	{
-		clear_array_commands(array_commands, array_operators);
+	/*	clear_array_commands(array_commands, array_operators);*/
 
 		bytes_read = read(data->file_descriptor, buff, BUFFER_SIZE - 1);
 		if (bytes_read == 0)
@@ -37,7 +37,7 @@ int _getline(data_of_program *data)
  * @array_commands: array of commands
  * @array_operators: array of operators
  */
-void clear_array_commands(char *array_commands[], char array_operators[])
+void clear_array_commands(char *array_commands[])
 {
 	int i;
 
@@ -54,6 +54,9 @@ void clear_array_commands(char *array_commands[], char array_operators[])
  * @array_commands: array of commands
  * @array_operators: array of operators
  */
+
+
+
 void split_commands_and_operators(char *buff, char *array_commands[], char array_operators[])
 {
 	int i = 0;
@@ -79,4 +82,46 @@ void shift_arrays_left(char *array_commands[], char array_operators[])
 		array_operators[i] = array_operators[i + 1];
 	}
 }
+/**
+* check_logic_ops - checks and split for && and || operators
+* @array_commands: array of the commands.
+* @i: index in the array_commands to be checked
+* @array_operators: array of the logical operators for each previous command
+*
+* Return: index of the last command in the array_commands.
+*/
+int check_logic_ops(char *array_commands[], int i, char array_operators[])
+{
+	char *temp = NULL;
+	int j;
 
+	/* checks for the & char in the command line*/
+	for (j = 0; array_commands[i] != NULL  && array_commands[i][j]; j++)
+	{
+		if (array_commands[i][j] == '&' && array_commands[i][j + 1] == '&')
+		{
+			/* split the line when chars && was found */
+			temp = array_commands[i];
+			array_commands[i][j] = '\0';
+			array_commands[i] = str_dup(array_commands[i]);
+			array_commands[i + 1] = str_dup(temp + j + 2);
+			i++;
+			array_operators[i] = '&';
+			free(temp);
+			j = 0;
+		}
+		if (array_commands[i][j] == '|' && array_commands[i][j + 1] == '|')
+		{
+			/* split the line when chars || was found */
+			temp = array_commands[i];
+			array_commands[i][j] = '\0';
+			array_commands[i] = str_dup(array_commands[i]);
+			array_commands[i + 1] = str_dup(temp + j + 2);
+			i++;
+			array_operators[i] = '|';
+			free(temp);
+			j = 0;
+		}
+	}
+	return (i);
+}

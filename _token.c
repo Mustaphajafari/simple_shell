@@ -7,7 +7,7 @@
  */
 void tokenize(data_of_program *data)
 {
-    const char *delimiter = " \t";
+    char *delimiter = " \t";
     int i, counter = 0;
     char *token;
 

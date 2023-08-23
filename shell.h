@@ -2,6 +2,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#include <ctype.h>
 
 
 #include <stdio.h> /* for printf*/
@@ -113,6 +114,8 @@ typedef struct builtins
 } builtins;
 
 
+int check_logic_ops(char *array_commands[], int i, char array_operators[]);
+
 
 
 int print_alias(data_of_program *data, char *alias);
@@ -141,7 +144,7 @@ void free_recurrent_data(data_of_program *data);
 void free_all_data(data_of_program *data);
 void free_array_of_pointers(char **array);
 int _getline(data_of_program *data);
-void clear_array_commands(char *array_commands[], char array_operators[]);
+/*void clear_array_commands(char *array_commands[], char array_operators[]);*/
 void shift_arrays_left(char *array_commands[], char array_operators[]);
 int built_list(data_of_program *data);
 void long_to_string(long number, char *string, int base);
@@ -169,6 +172,11 @@ char *expand_process_id(char *line);
 char *expand_variables_in_line(char *line, data_of_program *data);
 
 
+/* Function prototype */
+/*void split_commands_and_operators(char *buff, char *array_commands[], char array_operators[]);*/
+/*int check_logic_ops(char *array_commands[], int i, char array_operators[]);*/
+void split_commands_and_operators(char *buff, char *array_commands[], char array_operators[]);
 
-
+int check_logic_ops(char *array_commands[], int i, char array_operators[]);
+void clear_array_commands(char *array_commands[]);
 #endif

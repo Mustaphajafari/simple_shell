@@ -113,7 +113,7 @@ int built_help(data_of_program *data)
 		return 5;
 	}
 
-	for (i = 1; i < sizeof(help_messages) / sizeof(help_messages[0]); i++)
+	for (i = 1; i < (int)(sizeof(help_messages) / sizeof(help_messages[0])); i++)
 	{
 		length = str_len(data->tokens[1]);
 		if (str_compare(data->tokens[1], help_messages[i], length))
@@ -142,7 +142,7 @@ int built_alias(data_of_program *data)
 
 	while (data->tokens[++i])
 	{
-		if (count_characters(data->tokens[i], "="))
+		if (count_characters(data->tokens[i], '='))
 			set_alias(data->tokens[i], data);
 		else
 			print_alias(data, data->tokens[i]);
