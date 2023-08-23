@@ -155,7 +155,8 @@ int _put(char *string);
 int _putchar(char *string);
 int main(int argc, char *argv[], char *env[]);
 void handle_ctrl_c(int opr UNUSED);
-void inicialize_data(data_of_program *data, int argc, char *argv[], char **env);
+void inicialize_data(data_of_program *data, int argc,
+char *argv[], char **env);
 void sisifo(char *prompt, data_of_program *data);
 int str_len(const char *string);
 char *str_dup(const char *string);
@@ -173,9 +174,10 @@ char *expand_variables_in_line(char *line, data_of_program *data);
 
 
 /* Function prototype */
-/*void split_commands_and_operators(char *buff, char *array_commands[], char array_operators[]);*/
+
 /*int check_logic_ops(char *array_commands[], int i, char array_operators[]);*/
-void split_commands_and_operators(char *buff, char *array_commands[], char array_operators[]);
+void split_commands_and_operators(char *buff, char *array_commands[],
+char array_operators[]);
 
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);
 void clear_array_commands(char *array_commands[]);

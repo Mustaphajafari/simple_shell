@@ -35,7 +35,6 @@ return (str_len(data->input_line));
 /**
  * clear_array_commands - free the memory allocated in the array_commands.
  * @array_commands: array of commands
- * @array_operators: array of operators
  */
 void clear_array_commands(char *array_commands[])
 {

@@ -31,7 +31,15 @@ free(temp_line);
 free(expanded_pid_line);
 free(expanded_var_line);
 }
-
+/**
+ * expand_exit_status - expand exit status variable
+ * @line: the input line
+ *
+ * This function searches for the "$?" pattern in the input line
+ * and replaces it with the current value of the errno variable.
+ *
+ * Return: a new string with the expansion applied
+ */
 char *expand_exit_status(char *line)
 {
 char expansion[BUFFER_SIZE] = {'\0'};
@@ -50,7 +58,15 @@ placeholder = strstr(result, "$?");
 
 return (result);
 }
-
+/**
+ * expand_process_id - expand process ID variable
+ * @line: the input line
+ *
+ * This function searches for the "$$" pattern in the input line
+ * and replaces it with the current process's ID.
+ *
+ * Return: a new string with the expansion applied
+ */
 char *expand_process_id(char *line)
 {
 char expansion[BUFFER_SIZE] = {'\0'};
@@ -69,7 +85,17 @@ placeholder = strstr(result, "$$");
 
 return (result);
 }
-
+/**
+ * expand_variables_in_line - expand variables in a line
+ * @line: the input line
+ * @data: a pointer to a struct of the program's data
+ *
+ * This function searches for variable patterns (e.g., "$var")
+ * in the input line and replaces them with their corresponding
+ * values using the data provided.
+ *
+ * Return: a new string with the expansions applied
+ */
 char *expand_variables_in_line(char *line, data_of_program *data)
 {
 int i, j;

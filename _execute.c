@@ -29,7 +29,6 @@ exit(EXIT_FAILURE);
 }
 if (child_pid == 0)
 {
-		/* Child process: execute the program */
 retval = execve(data->tokens[0], data->tokens, data->env);
 if (retval == -1)
 {
@@ -39,14 +38,12 @@ exit(EXIT_FAILURE);
 }
 else
 {
-		/* Parent process: wait for child to finish and check status */
 wait(&status);
 if (WIFEXITED(status))
 errno = WEXITSTATUS(status);
 else if (WIFSIGNALED(status))
 errno = 128 + WTERMSIG(status);
 }
-
 return (0);
 }
 

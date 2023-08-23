@@ -1,4 +1,12 @@
 #include "shell.h"
+/**
+ * main - Entry point for the shell program
+ * @argc: Number of arguments
+ * @argv: Array of argument strings
+ * @env: Array of environment variable strings
+ * Return: Always 0
+ */
+
 
 int main(int argc, char *argv[], char *env[])
 {
@@ -20,13 +28,22 @@ errno = 0;
 sisifo(prompt, data);
 return (0);
 }
-
+/**
+ * handle_ctrl_c - Handles the Ctrl+C signal
+ * @UNUSED: Unused parameter
+ */
 void handle_ctrl_c(int opr UNUSED)
 {
 _put("\n");
 _put(PROMPT_MSG);
 }
-
+/**
+ * inicialize_data - Initializes data_of_program struct
+ * @data: Pointer to data_of_program struct
+ * @argc: Number of arguments
+ * @argv: Array of argument strings
+ * @env: Array of environment variable strings
+ */
 void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
 {
 int i;
@@ -56,7 +73,11 @@ data->alias_list = malloc(sizeof(char *) * 20);
 for (i = 0; i < 20; i++)
 data->alias_list[i] = NULL;
 }
-
+/**
+ * sisifo - Main loop of the shell program
+ * @prompt: Prompt message
+ * @data: Pointer to data_of_program struct
+ */
 void sisifo(char *prompt, data_of_program *data)
 {
 int error_code = 0, string_len = 0;
