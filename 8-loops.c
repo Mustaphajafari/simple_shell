@@ -98,7 +98,7 @@ void find_cmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 
-	// Count the number of non-delimiter arguments
+	/* Count the number of non-delimiter arguments */
 	for (int i = 0; info->arg[i]; i++)
 	{
 		if (!is_delim(info->arg[i], " \t\n"))
@@ -107,13 +107,13 @@ void find_cmd(info_t *info)
 		}
 	}
 
-	// If no non-delimiter arguments, return
+	/* If no non-delimiter arguments, return */
 	if (num_args == 0)
 	{
 		return;
 	}
 
-	// Find the command in the PATH
+	/* Find the command in the PATH */
 	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
 	if (path)
 	{
@@ -122,7 +122,7 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		// Check if command is an absolute path or a built-in command
+		/* Check if command is an absolute path or a built-in command */
 		if ((interactive(info) || _getenv(info, "PATH=") || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 		{
 			fork_cmd(info);
@@ -135,7 +135,7 @@ void find_cmd(info_t *info)
 	}
 }
 
-#include <sys/wait.h>
+
 
 /**
  * fork_cmd - forks a child process to run the command
@@ -156,22 +156,22 @@ void fork_cmd(info_t *info)
 		return;
 	}
 
-	if (child_pid == 0) // Child process
+	if (child_pid == 0) /* Child process */
 	{
 		exec_status = execve(info->path, info->argv, get_environ(info));
 
-		free_info(info, 1); // Clean up allocated resources
+		free_info(info, 1); /* Clean up allocated resources */
 
 		if (exec_status == -1)
 		{
 			if (errno == EACCES)
-				exit(126); // Permission denied
-			exit(1); // Other error
+				exit(126); /* Permission denied */
+			exit(1); /* Other error */
 		}
 	}
-	else // Parent process
+	else /* Parent process */
 	{
-		waitpid(child_pid, &(info->status), 0); // Wait for the child process to finish
+		waitpid(child_pid, &(info->status), 0); /* Wait for the child process to finish */
 
 		if (WIFEXITED(info->status))
 		{

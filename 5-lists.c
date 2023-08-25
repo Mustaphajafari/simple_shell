@@ -1,6 +1,6 @@
 #include "shell.h"
 
-#include "shell.h"  // Include necessary header file
+
 
 /**
  * get_node_index - gets the index of a node in a linked list
@@ -21,7 +21,7 @@ int get_node_index(const list_t *head, const list_t *target)
         head = head->next;
     }
 
-    // Node not found in the list
+    /* Node not found in the list */
     return -1;
 }
 

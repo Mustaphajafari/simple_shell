@@ -48,7 +48,7 @@ char **list_to_array(const list_t *head)
         head = head->next;
     }
 
-    array[i] = NULL; // Null-terminate the array
+    array[i] = NULL; /* Null-terminate the array */
     return array;
 }
 
@@ -76,7 +76,7 @@ size_t print_list(const list_t *h)
 	return (i);
 }
 
-#include "shell.h"
+
 
 /**
  * find_node_with_prefix - finds a node whose string starts with a prefix
@@ -90,7 +90,7 @@ list_t *find_node_with_prefix(const list_t *head, const char *prefix) /*main fun
     while (head != NULL)
     {
         if (_starts_with(head->str, prefix))
-            return (list_t *)head; // Cast const away
+            return (list_t *)head; /* Cast const away */
         head = head->next;
     }
     return NULL;

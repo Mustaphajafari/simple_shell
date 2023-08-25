@@ -1,15 +1,19 @@
 #include "shell.h"
 
 
-/**
- * _flush_buffer - flushes the buffer and resets the index
- * @buf: the buffer to flush
- * @index: the index to reset
- */
+#include <unistd.h>  /* Include necessary header */
+
 void _flush_buffer(char *buf, int *index)
 {
-    write(1, buf, *index); // Flush the buffer by writing its contents to the output
-    *index = 0; // Reset the buffer index
+    if (*index > 0)
+    {
+        ssize_t bytes_written = write(1, buf, *index);
+        if (bytes_written == -1)
+        {
+            /* Handle error appropriately, e.g., print an error message */
+        }
+        *index = 0; /* Reset the buffer index */
+    }
 }
 
 /**
@@ -26,11 +30,11 @@ int _putchar(char c)
 
     if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
     {
-        _flush_buffer(buf, &i); // Call the helper function to flush the buffer
+        _flush_buffer(buf, &i); /* Call the helper function to flush the buffer */
     }
     if (c != BUF_FLUSH)
-        buf[i++] = c; // Add the character to the buffer
-    return (1); // Return 1 to indicate successful printing
+        buf[i++] = c; /* Add the character to the buffer */
+    return (1); /* Return 1 to indicate successful printing */
 }
 
 /**
@@ -47,7 +51,7 @@ void _puts(char *str)
         return;
     while (str[i] != '\0')
     {
-        _putchar(str[i]); // Call _putchar to print each character
+        _putchar(str[i]); /* Call _putchar to print each character */
         i++;
     }
 }
@@ -121,7 +125,7 @@ char *starts_with(const char *string, const char *substring)
 {
     while (*needle)
     {
-        // If the characters don't match, return NULL immediately.
+        /* If the characters don't match, return NULL immediately. */
         if (*needle != *haystack)
         {
             return NULL;
@@ -130,7 +134,7 @@ char *starts_with(const char *string, const char *substring)
         haystack++;
     }
 
-    // Return the address of the next character after the matched substring.
+    /* Return the address of the next character after the matched substring. */
     return (char *)haystack;
 }
 

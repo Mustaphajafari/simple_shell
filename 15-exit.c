@@ -48,13 +48,13 @@ char *_strchr(const char *s, int c)
     while (*s != '\0')
     {
         if (*s == c)
-            return (char *)s; // Cast away const to match function signature
+            return (char *)s; /* Cast away const to match function signature */
         s++;
     }
 
     if (*s == c)
-        return (char *)s; // Return pointer to null-terminator if character is '\0'
+        return (char *)s; /* Return pointer to null-terminator if character is '\0' */
 
-    return NULL; // Character not found
+    return NULL; /* Character not found */
 }
 

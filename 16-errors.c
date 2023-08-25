@@ -1,12 +1,12 @@
 #include "shell.h"
 
-#include <unistd.h>
+
 
 void _eputs(const char *str) {
     if (str) {
         ssize_t i = 0;
         while (str[i] != '\0') {
-            write(1, &str[i], 1); // Write one character at a time to standard output
+            write(1, &str[i], 1); /* Write one character at a time to standard output */
             i++;
         }
     }

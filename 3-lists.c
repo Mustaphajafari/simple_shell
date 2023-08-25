@@ -130,8 +130,8 @@ int delete_node_at_index(list_t **head, unsigned int index)
             {
                 prev_node->next = current_node->next;
             }
-            free(current_node->str); // Free allocated memory for the string
-            free(current_node); // Free the node itself
+            free(current_node->str); /* Free allocated memory for the string */
+            free(current_node); /* Free the node itself */
             return 1;
         }
         prev_node = current_node;
@@ -139,7 +139,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
         count++;
     }
 
-    return 0; // Index is out of bounds
+    return 0; /* Index is out of bounds */
 }
 
 /**
@@ -157,8 +157,8 @@ void free_list(list_t *head)
         current_node = head;
         head = head->next;
 
-        free(current_node->str); // Free allocated memory for the string
-        free(current_node); // Free the node itself
+        free(current_node->str); /* Free allocated memory for the string */
+        free(current_node); /* Free the node itself */
     }
 }
 

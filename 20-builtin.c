@@ -34,9 +34,9 @@ int set_alias(info_t *info, char *alias)
     char *p = _strchr(alias, '=');
     if (p)
     {
-        *p = '\0'; // Temporarily remove the '=' to get the alias name
+        *p = '\0'; /* Temporarily remove the '=' to get the alias name */
         unset_alias(info, alias);
-        *p = '='; // Restore the '='
+        *p = '='; /* Restore the '=' */
         return (add_node_end(&(info->alias), alias, 0) == NULL);
     }
     return (1);

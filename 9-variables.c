@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * is_chain - tests if current char in buffer is a chain delimiter
  * @info: the parameter struct
@@ -12,17 +14,17 @@ int is_chain(info_t *info, char *buf, size_t *p)
 
 	if (buf[j] == '|' && buf[j + 1] == '|')
 	{
-		buf[j++] = '\0'; // Replace '|' with null terminator
+		buf[j++] = '\0'; /* Replace '|' with null terminator */
 		info->cmd_buf_type = CMD_OR;
 	}
 	else if (buf[j] == '&' && buf[j + 1] == '&')
 	{
-		buf[j++] = '\0'; // Replace '&' with null terminator
+		buf[j++] = '\0'; /* Replace '&' with null terminator */
 		info->cmd_buf_type = CMD_AND;
 	}
 	else if (buf[j] == ';') /* found end of this command */
 	{
-		buf[j++] = '\0'; // Replace ';' with null terminator
+		buf[j++] = '\0'; /* Replace ';' with null terminator */
 		info->cmd_buf_type = CMD_CHAIN;
 	}
 	else
@@ -48,13 +50,13 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 
     if (info->cmd_buf_type == CMD_AND && info->status)
     {
-        buf[i] = '\0'; // Terminate the current command
-        j = len;       // Skip to the end of the buffer
+        buf[i] = '\0'; /* Terminate the current command */
+        j = len;       /* Skip to the end of the buffer */
     }
     else if (info->cmd_buf_type == CMD_OR && !info->status)
     {
-        buf[i] = '\0'; // Terminate the current command
-        j = len;       // Skip to the end of the buffer
+        buf[i] = '\0'; /* Terminate the current command */
+        j = len;       /* Skip to the end of the buffer */
     }
 
     *p = j;

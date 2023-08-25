@@ -22,7 +22,7 @@ void set_info(info_t *info, char **av)
 	int i;
 
 	info->fname = av[0];
-	info->argc = 0;  // Initialize argc to 0
+	info->argc = 0;  /* Initialize argc to 0 */
 
 	if (info->arg)
 	{
@@ -33,14 +33,14 @@ void set_info(info_t *info, char **av)
 			if (info->argv)
 			{
 				info->argv[0] = _strdup(info->arg);
-				info->argc = 1;  // Set argc to 1
+				info->argc = 1;  /* Set argc to 1 */
 			}
 		}
 		else
 		{
 			for (i = 0; info->argv[i]; i++)
-				;  // Count the number of arguments
-			info->argc = i;  // Set argc to the number of arguments
+				;  /* Count the number of arguments */
+			info->argc = i;  /* Set argc to the number of arguments */
 			replace_alias(info);
 			replace_vars(info);
 		}
