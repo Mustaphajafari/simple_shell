@@ -140,7 +140,7 @@ char *_strcat(char *, char *);
 /* toem_string1.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
-void _puts(char *);
+void _putit(char *);
 int _putchar(char);
 
 /* toem_exits.c */
@@ -231,7 +231,6 @@ void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
-
 
 
 
