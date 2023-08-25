@@ -43,7 +43,7 @@ char *_strncat(char *dest, const char *src, size_t n)
  * Return: a pointer to the first occurrence of the character in the string,
  *         or NULL if the character is not found
  */
-char *_strchr(const char *s, int c)
+char *_strchr(char *s, int c)
 {
     while (*s != '\0')
     {

@@ -29,6 +29,22 @@ int _myexit(info_t *info)
 	return (-2);
 }
 
+#include "shell.h"
+
+/**
+ * get_home_directory - Get the home directory path from the environment
+ * @info: Structure containing potential arguments.
+ *
+ * Return: Pointer to the home directory string, or NULL if not found.
+ */
+char *get_home_directory(info_t *info)
+{
+    char *home = _getenv(info, "HOME=");
+    if (!home)
+        home = _getenv(info, "PWD=");
+    return home;
+}
+
 /**
  * _mycd - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
@@ -78,6 +94,8 @@ int _mycd(info_t *info)
 	}
 	return (0);
 }
+
+
 
 /**
  * _myhelp - changes the current directory of the process

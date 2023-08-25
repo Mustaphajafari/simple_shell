@@ -6,7 +6,7 @@
  *
  * Return: length of the linked list
  */
-size_t list_length(const list_t *head)
+size_t list_len(const list_t *head)
 {
     size_t count = 0;
 
@@ -25,7 +25,7 @@ size_t list_length(const list_t *head)
  *
  * Return: array of strings (char **)
  */
-char **list_to_array(const list_t *head)
+char **list_to_strings(const list_t *head)
 {
     size_t len = list_length(head);
     char **array = malloc((len + 1) * sizeof(char *));
@@ -85,7 +85,7 @@ size_t print_list(const list_t *h)
  *
  * Return: pointer to the node or NULL if not found
  */
-list_t *find_node_with_prefix(const list_t *head, const char *prefix) /*main function*/
+list_t *node_starts_with(const list_t *head, const char *prefix) /*main function*/
 {
     while (head != NULL)
     {

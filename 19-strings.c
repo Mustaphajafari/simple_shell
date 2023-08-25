@@ -85,3 +85,45 @@ int _putchar(char c)
 		buf[i++] = c;
 	return (1);
 }
+
+
+
+/*
+ * _flush_buffer - Writes the buffer contents to the output
+ * @buf: The buffer containing characters to be flushed
+ * @index: The current index in the buffer
+ *
+ * Return: void
+ *
+void _flush_buffer(char *buf, size_t *index)
+{
+    if (*index > 0)
+    {
+        write(1, buf, *index);
+        *index = 0;
+    }
+}
+
+**
+ * _putchar - Writes a character to the buffer
+ * @c: The character to write
+ * @buf: The buffer to store characters
+ * @index: The current index in the buffer
+ *
+ * Return: 1 on success, 0 on failure
+ *
+int _putchar(char c, char *buf, size_t *index)
+{
+    if (c == BUF_FLUSH || *index >= WRITE_BUF_SIZE)
+    {
+        _flush_buffer(buf, index);
+    }
+
+    if (c != BUF_FLUSH)
+    {
+        buf[(*index)++] = c;
+    }
+
+    return 1;
+}
+*/
