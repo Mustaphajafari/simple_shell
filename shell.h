@@ -163,9 +163,9 @@ int frfr(void **);
 
 /* 0 */
 int interactive(info_t *);
-/*int is_delim(char, char *);*/
+
 int delimiter(char c, const char *delim);
-/*int _stralpha(int);*//* editied */        /*unecessary*/
+
 int _atoi(char *);
 
 /* 5 */
